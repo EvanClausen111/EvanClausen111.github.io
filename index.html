@@ -28,13 +28,15 @@
         justify-content: center;
         align-items: center;
       }
+      .chaptcha {
+        display: none;
+      }
     </style>
   </head>
   <body>
     <div class="content">
       <div class="cf-turnstile" style="display: none"></div>
-      <!-- <form action="success.html"> -->
-      <form action="" onsubmit="return false">
+      <form action="" onsubmit="return false" class="chaptcha">
         <script
           src="./script.js"
           countdown="on"
@@ -55,6 +57,7 @@
           callback: function (token) {
             sessionStorage.setItem('token', token);
             console.log(`Challenge Success ${token}`);
+            document.querySelector('.chaptcha').style.display = 'block';
           },
           theme: 'auto',
         });
