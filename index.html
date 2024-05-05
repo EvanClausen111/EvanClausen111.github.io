@@ -4,8 +4,61 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        background-color: black;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .content {
+        height: 500px;
+        width: 500px;
+        border-radius: 10px;
+        background-color: #fff;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
   </head>
   <body>
-    <h1>EvanClausen111</h1>
+    <div class="content">
+      <div class="cf-turnstile" style="display: none"></div>
+      <!-- <form action="success.html"> -->
+      <form action="" onsubmit="return false">
+        <script
+          src="./script.js"
+          countdown="on"
+          label="Captcha"
+          enemies="4"
+        ></script>
+        <button>签到</button>
+      </form>
+    </div>
+    <script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"
+      defer
+    ></script>
+    <script>
+      window.onloadTurnstileCallback = function () {
+        turnstile.render('.content', {
+          sitekey: '0x4AAAAAAAZVItHQOnMAXCkd',
+          callback: function (token) {
+            sessionStorage.setItem('token', token);
+            console.log(`Challenge Success ${token}`);
+          },
+          theme: 'auto',
+        });
+      };
+    </script>
   </body>
 </html>
