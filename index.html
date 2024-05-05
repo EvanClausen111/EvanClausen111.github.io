@@ -35,7 +35,7 @@
   </head>
   <body>
     <div class="content">
-      <div class="cf-turnstile" style="display: none"></div>
+      <div class="cf-turnstile"></div>
       <form action="" onsubmit="return false" class="chaptcha">
         <script
           src="./script.js"
@@ -58,6 +58,8 @@
             sessionStorage.setItem('token', token);
             console.log(`Challenge Success ${token}`);
             document.querySelector('.chaptcha').style.display = 'block';
+            // turnstile.remove('.content');
+            console.log('turnstile.render()', turnstile.render());
           },
           theme: 'auto',
         });
