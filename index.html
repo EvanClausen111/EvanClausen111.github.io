@@ -58,8 +58,7 @@
             sessionStorage.setItem('token', token);
             console.log(`Challenge Success ${token}`);
             document.querySelector('.chaptcha').style.display = 'block';
-            // turnstile.remove('.content');
-            console.log('turnstile.render()', turnstile.render());
+            document.querySelector('.cf-turnstile').remove();
           },
           theme: 'auto',
         });
