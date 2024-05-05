@@ -52,7 +52,7 @@
     ></script>
     <script>
       window.onloadTurnstileCallback = function () {
-        turnstile.render('.content', {
+        turnstile.render('.cf-turnstile', {
           sitekey: '0x4AAAAAAAZVItHQOnMAXCkd',
           callback: function (token) {
             sessionStorage.setItem('token', token);
